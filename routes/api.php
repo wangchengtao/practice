@@ -19,4 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('topics', TopicController::class);
-Route::apiResource('replies', ReplyController::class);
+
+Route::post('topics/{topic}/replies', [ReplyController::class, 'store'])->name('replies.store');
+Route::get('replies/{reply}', [ReplyController::class, 'show'])->name('replies.show');
+Route::put('replies/{reply}', [ReplyController::class, 'update'])->name('replies.update');
+Route::delete('replies/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');
