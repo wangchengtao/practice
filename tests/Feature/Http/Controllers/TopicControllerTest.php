@@ -8,6 +8,7 @@ use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 class TopicControllerTest extends TestCase
@@ -26,7 +27,11 @@ class TopicControllerTest extends TestCase
 
         $this->get(route('topics.index'))
             ->assertStatus(200)
-            ->assertJsonPath('data.count', 2);
+            ->assertJson(fn (AssertableJson $json) =>
+                $json->has('data.list', 2, fn (AssertableJson $json) =>
+                    $json->has('id')->has('title')->has('body')->has('user')
+                )->etc()
+            );
     }
 
     public function testIndexByQuery(): void
@@ -94,15 +99,23 @@ class TopicControllerTest extends TestCase
         $topic = Topic::factory()
                       ->for(User::factory())
                       ->for(Category::factory())
+                      ->for(User::factory(), 'lastReplyUser')
+                      ->has(Reply::factory()->count(2)->for(User::factory()))
                       ->create($params);
 
         $this->assertDatabaseCount(Topic::class, 1);
         $this->assertDatabaseCount(Category::class, 1);
-        $this->assertDatabaseCount(User::class, 1);
 
         $this->get(route('topics.show', $topic->id))
             ->assertStatus(200)
-            ->assertJsonPath('data.title', $params['title']);
+            ->assertJson(fn (AssertableJson $json) =>
+                $json->where('data.title', $params['title'])
+                     ->has('data.replies', 2)
+                     ->has('data.user')
+                     ->has('data.category')
+                     ->has('data.last_reply_user')
+                     ->etc()
+            );
     }
 
     public function testUpdate(): void

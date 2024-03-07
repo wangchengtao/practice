@@ -22,7 +22,7 @@ class TopicResource extends JsonResource
             'category' => new CategoryResource($this->category),
             'reply_count' => $this->reply_count,
             'last_reply_user' => new UserResource($this->whenLoaded('lastReplyUser')),
-            'replies' => new UserCollection($this->replies),
+            'replies' => ReplyResource::collection($this->whenLoaded('replies')),
         ];
     }
 }

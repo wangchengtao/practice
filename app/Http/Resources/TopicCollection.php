@@ -14,6 +14,11 @@ class TopicCollection extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return $this->collection->map(fn (TopicResource $topic) => [
+            'id' => $topic->id,
+            'title' => $topic->title,
+            'body' => $topic->body,
+            'user' => $topic->user->name,
+        ])->all();
     }
 }

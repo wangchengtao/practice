@@ -29,7 +29,7 @@ class TopicController extends Controller
 
     public function show(Topic $topic)
     {
-        return $this->success(new TopicResource($topic));
+        return $this->success(new TopicResource($topic->load('replies', 'lastReplyUser')));
     }
 
     public function update(TopicRequest $request, Topic $topic)
