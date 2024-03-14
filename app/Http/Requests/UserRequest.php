@@ -17,6 +17,7 @@ class UserRequest extends FormRequest
             'name' => 'required|between:3,25|regex:/^[\w\-\_]+$/|unique:users,name,' . Auth::id(),
             'email' => 'required|email',
             'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
+            'introduction' => 'max:80',
         ];
     }
 
@@ -29,6 +30,7 @@ class UserRequest extends FormRequest
             'name.required' => '用户名不能为空。',
             'email.unique' => '邮箱已被占用，请重新填写。',
             'email.email' => '邮箱格式不正确。',
+            'introduction.max' => '个人简介最多80个字符。',
         ];
     }
 }

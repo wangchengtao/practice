@@ -17,7 +17,11 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (! $token = Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (! $token = Auth::guard('admin')->attempt([
+                'name' => $request->name,
+                'password' => $request->password,
+            ]))
+        {
             return $this->error('账号密码错误');
         }
 
