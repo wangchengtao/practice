@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82c905593d751965fbecd1d5d86c663c",
+    "content-hash": "f2ee9787fac898b4d85c6d98949da3d7",
     "packages": [
         {
             "name": "amphp/amp",
@@ -5764,6 +5764,63 @@
                 "validate"
             ],
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yaza/laravel-repository-service",
+            "version": "V4.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/yaza/laravel-repository-service/V4.0.0/yaza-laravel-repository-service-V4.0.0.zip",
+                "reference": "ada759131a430e28abe925418ec4b859fa38476e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.14.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "spatie/laravel-ray": "^1.26"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelEasyRepository\\LaravelEasyRepositoryServiceProvider",
+                        "LaravelEasyRepository\\RepositoryServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelEasyRepository": "LaravelEasyRepository\\LaravelEasyRepositoryFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelEasyRepository\\": "src",
+                    "LaravelEasyRepository\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple repository, service pattern for laravel",
+            "homepage": "https://github.com/yaza-putu/laravel-repository-with-service.git",
+            "keywords": [
+                "laravel",
+                "laravel-repository",
+                "laravel-repository-service"
+            ],
+            "time": "2023-02-26T05:22:02+00:00"
         }
     ],
     "packages-dev": [

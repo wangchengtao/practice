@@ -1,6 +1,12 @@
 ## 概述
 博客网站 demo，基于 Laravel 10.
 
+## 测试
+`php artisan test`
+
+## 接口文档
+`php artisan scribe:generate`
+
 ## 依赖列表
 | **名称**                     | **版本** | **描述**        | **链接**                                                    |
 |----------------------------|--------|---------------|-----------------------------------------------------------|
@@ -9,13 +15,3 @@
 |torann/laravel-repository| ^1.0.0 | repository 模式 | https://lyften.com/projects/laravel-repository/doc/       |
 |spatie/laravel-data| ^4.2   | 数据对象模式        | https://spatie.be/docs/laravel-data/v4/installation-setup |
 
-
-## 常用命令
-| **命令**                      | **描述** |
-|:----------------------------|:-------|
-| php artisan scribe:generate | 生成接口文档 |
-
-
-## TODO
-- User
-- Data Object
