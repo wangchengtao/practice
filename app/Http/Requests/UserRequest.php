@@ -15,9 +15,10 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required|between:3,25|regex:/^[\w\-\_]+$/|unique:users,name,' . Auth::id(),
-            'email' => 'required|email',
+            'email' => 'email',
             'avatar' => 'mimes:jpeg,bmp,png,gif|dimensions:min_width=208,min_height=208',
             'introduction' => 'max:80',
+            'password' => 'min:6',
         ];
     }
 

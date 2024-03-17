@@ -32,7 +32,8 @@ class UserControllerTest extends TestCase
         ];
 
         $this->postJson(route('users.store'), $params)
-             ->assertStatus(200);
+             ->assertStatus(200)
+             ->assertJsonPath('code', '000000');
 
         $this->assertDatabaseCount(User::class, 1);
     }
