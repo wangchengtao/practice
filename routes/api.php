@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\TopicController;
@@ -27,7 +28,9 @@ Route::put('replies/{reply}', [ReplyController::class, 'update'])->name('replies
 Route::delete('replies/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');
 
 Route::apiResource('users', UserController::class)->except(['destroy']);
-// Route::post('users', [UserController::class, 'store'])->name('users.store');
-// Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
-// Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
-// Route::get('users', [UserController::class, 'index'])->name('users.index');
+
+Route::post('auth', [AuthController::class, 'login'])->name('auth.login');
+Route::get('auth/me', [AuthController::class, 'me'])->name('auth.me');
+Route::delete('auth', [AuthController::class, 'logout'])->name('auth.logout');
+Route::patch('auth/password', [AuthController::class, 'modifyPassword'])->name('auth.modify-password');
+

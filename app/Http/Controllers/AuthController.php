@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Data\AuthTokenData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,12 +13,12 @@ class AuthController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login']]);
     }
 
     public function login(Request $request)
     {
-        if (! $token = Auth::guard('admin')->attempt([
+        if (! $token = Auth::guard('api')->attempt([
                 'name' => $request->name,
                 'password' => $request->password,
             ]))
@@ -68,20 +69,18 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return $this->success([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-        ]);
+        return $this->success(new AuthTokenData(
+            access_token: $token,
+            token_type: 'bearer',
+            expires_in: auth()->factory()->getTTL() * 60,
+        ));
     }
 
     public function modifyPassword(Request $request)
     {
         $request->validate([
             'old_password' => 'required',
-            'password' => 'required|confirmed|weak_password',
-        ], [
-            'password.weak_password' => '密码格式须包含大、小写字母、数字和字符，限 8-16 位',
+            'password' => 'required',
         ]);
 
         $user = auth()->user();
