@@ -4,10 +4,11 @@ namespace App\Models;
 
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Topic extends Model
 {
-    use Filterable;
+    use Filterable, HasFactory;
 
     protected $fillable = [
         'title', 'body', 'category_id', 'excerpt', 'slug',

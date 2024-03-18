@@ -2,6 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Knuckles\Scribe\Attributes\BodyParam;
+
+#[BodyParam('title', 'string', '标题')]
+#[BodyParam('body', 'string', '内容')]
+#[BodyParam('category_id', 'integer', '分类ID')]
 class TopicRequest extends FormRequest
 {
     /**

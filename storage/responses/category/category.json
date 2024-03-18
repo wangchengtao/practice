@@ -1,0 +1,9 @@
+{
+    "code": "000000",
+    "message": "请求成功",
+    "data": {
+        "id": 1,
+        "name": "php",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, eveniet."
+    }
+}

@@ -4,14 +4,13 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Knuckles\Scribe\Attributes\ResponseField;
 
 class CategoryResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
+    #[ResponseField('id')]
+    #[ResponseField('name', 'string', '分类名称')]
+    #[ResponseField('description', 'string', '分类描述')]
     public function toArray(Request $request): array
     {
         return [

@@ -1,0 +1,24 @@
+{
+    "code": "000000",
+    "message": "请求成功",
+    "data": {
+        "id": 1,
+        "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, eveniet.",
+        "body": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, eveniet.",
+        "category_id": 1,
+        "excerpt": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, eveniet.",
+        "slug": "lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-aliqid-eveniet",
+        "user": {
+            "id": 5,
+            "name": "敖欢",
+            "avatar": ""
+        },
+        "reply_count": 1,
+        "view_count": 1,
+        "reply_user": {
+            "id": 5,
+            "name": "敖欢",
+            "email": "perspiciatis.at@example.org"
+        }
+    }
+}

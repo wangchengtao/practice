@@ -2,6 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Knuckles\Scribe\Attributes\BodyParam;
+
+#[BodyParam('content', 'string', '回复内容')]
 class ReplyRequest extends FormRequest
 {
     /**

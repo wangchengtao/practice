@@ -21,16 +21,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('categories', CategoryController::class);
 Route::apiResource('topics', TopicController::class);
+Route::apiResource('users', UserController::class)->except(['destroy']);
 
 Route::post('topics/{topic}/replies', [ReplyController::class, 'store'])->name('replies.store');
 Route::get('replies/{reply}', [ReplyController::class, 'show'])->name('replies.show');
 Route::put('replies/{reply}', [ReplyController::class, 'update'])->name('replies.update');
 Route::delete('replies/{reply}', [ReplyController::class, 'destroy'])->name('replies.destroy');
 
-Route::apiResource('users', UserController::class)->except(['destroy']);
-
-Route::post('auth', [AuthController::class, 'login'])->name('auth.login');
-Route::get('auth/me', [AuthController::class, 'me'])->name('auth.me');
-Route::delete('auth', [AuthController::class, 'logout'])->name('auth.logout');
-Route::patch('auth/password', [AuthController::class, 'modifyPassword'])->name('auth.modify-password');
+Route::prefix('auth')->group(function () {
+    Route::post('/', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/me', [AuthController::class, 'me'])->name('auth.me');
+    Route::delete('/', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::patch('password', [AuthController::class, 'modifyPassword'])->name('auth.modify-password');
+});
 

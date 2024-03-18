@@ -2,6 +2,10 @@
 
 namespace App\Http\Requests;
 
+use Knuckles\Scribe\Attributes\BodyParam;
+
+#[BodyParam('name', 'string', '分类名称')]
+#[BodyParam('description', 'string', '分类描述')]
 class CategoryRequest extends FormRequest
 {
     /**

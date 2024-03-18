@@ -3,7 +3,14 @@
 namespace App\Http\Requests;
 
 use Illuminate\Support\Facades\Auth;
+use Knuckles\Scribe\Attributes\BodyParam;
 
+#[BodyParam('name', 'string', '用户名称')]
+#[BodyParam('email', 'string', '用户邮箱')]
+#[BodyParam('password', 'string', '密码')]
+#[BodyParam('introduction', 'string', '用户简介')]
+#[BodyParam('phone', 'string', '用户电话号码')]
+#[BodyParam('avatar', 'string', '头像地址')]
 class UserRequest extends FormRequest
 {
     /**
